@@ -17,42 +17,22 @@
 # along with Ronin.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/model'
+require 'ronin/database/migrations/1.0.0'
 
 module Ronin
-  #
-  # Represents a Software product.
-  #
-  class Software
+  module Database
+    module Migrations
+      migration :add_software_id_to_open_ports_table,
+                :needs => :create_open_ports_table do
+        up do
+          modify_table :ronin_open_ports do
+            add_column :software_id, Integer
+          end
+        end
 
-    include Model
-
-    # Primary key
-    property :id, Serial
-
-    # Name
-    property :name, String, :required => true, :index => true
-
-    # Version
-    property :version, String, :required => true, :index => true
-
-    # The vendor of the software
-    belongs_to :vendor, :required => false
-
-    # The open ports running the software
-    has 0..n, :open_ports
-
-    #
-    # Converts the software to a String.
-    #
-    # @return [String]
-    #   The software vendor, name and version.
-    #
-    # @api public
-    #
-    def to_s
-      [self.vendor, self.name, self.version].compact.join(' ')
+        down do
+        end
+      end
     end
-
   end
 end
