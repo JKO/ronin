@@ -42,33 +42,4 @@ describe Model do
     resource.name.should == 'bob'
     resource.var.should == 2
   end
-
-  describe "humanize_attributes" do
-    let(:resource) { subject.new(:name => 'joe', :age => 21) }
-
-    it "should humanize the attributes of a model" do
-      resource.humanize_attributes.should == {
-        'Name' => 'joe',
-        'Age' => '21'
-      }
-    end
-
-    it "should exclude certain attributes to humanize" do
-      resource.humanize_attributes(:exclude => [:name]).should == {
-        'Age' => '21'
-      }
-    end
-
-    it "should filter out nil values" do
-      resource.age = nil
-
-      resource.humanize_attributes.should == {'Name' => 'joe'}
-    end
-
-    it "should filter out empty values" do
-      resource.name = ''
-
-      resource.humanize_attributes.should == {'Age' => '21'}
-    end
-  end
 end
