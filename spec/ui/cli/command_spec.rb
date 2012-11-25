@@ -142,31 +142,6 @@ describe UI::CLI::Command do
       it "should have a :silent option" do
         subject.should have_key(:silent)
       end
-
-      it "should have a :color option" do
-        subject.should have_key(:color)
-      end
-
-      describe "color option" do
-        subject { described_class.new.color }
-
-        context "when $stdout is a TTY" do
-          it { should be_true }
-        end
-
-        context "when $stdout is not a TTY" do
-          before do
-            @old_stdout = $stdout
-            $stdout     = StringIO.new
-          end
-
-          it { should be_false }
-
-          after do
-            $stdout = @old_stdout
-          end
-        end
-      end
     end
   end
 
@@ -183,7 +158,7 @@ describe UI::CLI::Command do
   end
 
   describe "each_option" do
-    let(:expected) { [:verbose, :quiet, :silent, :color, :foo] }
+    let(:expected) { [:verbose, :quiet, :silent, :foo] }
 
     it "should iterate over each option" do
       names = []

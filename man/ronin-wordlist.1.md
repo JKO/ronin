@@ -24,9 +24,6 @@ Builds and/or mutates Wordlists.
 `--[no-]silent`
   Silence all output.
 
-`--[no-]color`
-  Enables color output.
-
 `-i`, `--input` *FILE*
   The input text FILE to parse.
 

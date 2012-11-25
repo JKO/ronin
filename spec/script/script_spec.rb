@@ -41,8 +41,8 @@ describe Script do
     subject.included_modules.should include(Parameters)
   end
 
-  it "should include UI::Output::Helpers" do
-    subject.included_modules.should include(UI::Output::Helpers)
+  it "should include UI::Printing" do
+    subject.included_modules.should include(UI::Printing)
   end
 
   it "should add the type property to the model" do
