@@ -36,7 +36,7 @@ describe Model::HasDescription do
         three
       }
 
-      resource.description.should == "test\nthree"
+      resource.description.should == "test#{$/}three"
     end
 
     it "should preserve non-bordering empty lines" do
@@ -46,7 +46,7 @@ describe Model::HasDescription do
         four
       }
 
-      resource.description.should == "test\n\nfour"
+      resource.description.should == "test#{$/}#{$/}four"
     end
   end
 
