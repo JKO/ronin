@@ -17,5 +17,28 @@
 # along with Ronin.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/database/migrations/unknown_migration'
-require 'ronin/database/migrations/duplicate_migration'
+require 'ronin/database/migrations/migrations'
+
+module Ronin
+  module Database
+    module Migrations
+      #
+      # 1.0.0
+      #
+      migration :create_url_query_params_table do
+        up do
+          create_table :ronin_url_query_params do
+            column :id, Integer, :serial => true
+            column :name, String, :length => 256, :not_null => true
+            column :value, Text
+            column :url_id, Integer, :not_null => true
+          end
+        end
+
+        down do
+          drop_table :ronin_url_query_params
+        end
+      end
+    end
+  end
+end
