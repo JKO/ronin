@@ -15,18 +15,7 @@ require 'ronin/spec/ui/printing'
 include Ronin
 
 RSpec.configure do |spec|
-  spec.before(:suite) do
-    [
-      BasicModel,
-      CustomModel,
-      AuthoredModel,
-      DescribedModel,
-      LicensedModel,
-      NamedModel,
-      TitledModel,
-      MyScript
-    ].each(&:auto_migrate!)
-  end
+  spec.before(:suite) { DataMapper.auto_upgrade! }
 
   spec.before(:suite) do
     Repository.create(
