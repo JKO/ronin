@@ -17,5 +17,4 @@
 # along with Ronin.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/script/exceptions'
 require 'ronin/script/script'
