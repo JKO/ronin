@@ -16,29 +16,29 @@ describe Model do
   end
 
   it "should allow creating new instances of the model" do
-    resource = subject.new(:name => 'joe')
+    resource = subject.new(name: 'joe')
 
     resource.name.should == 'joe'
   end
 
   it "should call initialize when creating new instances of the model" do
-    resource = custom_model.new(:name => 'joe')
+    resource = custom_model.new(name: 'joe')
 
     resource.name.should == 'joe'
     resource.var.should == 2
   end
 
   it "should call initialize when creating a new resource" do
-    resource = custom_model.create!(:name => 'jim')
+    resource = custom_model.create!(name: 'jim')
 
     resource.name.should == 'jim'
     resource.var.should == 2
   end
 
   it "should call initialize when loading from the database" do
-    custom_model.create!(:name => 'bob')
+    custom_model.create!(name: 'bob')
 
-    resource = custom_model.first(:name => 'bob')
+    resource = custom_model.first(name: 'bob')
     resource.name.should == 'bob'
     resource.var.should == 2
   end

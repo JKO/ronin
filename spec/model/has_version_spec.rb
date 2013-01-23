@@ -10,18 +10,18 @@ describe Model::HasVersion do
     subject.auto_migrate!
 
     subject.create(
-      :version => '1.1',
-      :content => 'Foo'
+      version: '1.1',
+      content: 'Foo'
     )
 
     subject.create(
-      :version => '1.1',
-      :content => 'Bar'
+      version: '1.1',
+      content: 'Bar'
     )
 
     subject.create(
-      :version => '1.2',
-      :content => 'Foo'
+      version: '1.2',
+      content: 'Foo'
     )
   end
 
@@ -51,7 +51,7 @@ describe Model::HasVersion do
   end
 
   it "should allow querying the latest revision" do
-    resource = subject.all(:content => 'Foo').latest
+    resource = subject.all(content: 'Foo').latest
 
     resource.version.should == '1.2'
   end

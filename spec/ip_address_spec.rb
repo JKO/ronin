@@ -6,7 +6,7 @@ describe IPAddress do
   let(:example_domain) { 'localhost' }
   let(:example_ip) { '127.0.0.1' }
 
-  subject { described_class.new(:address => example_ip) }
+  subject { described_class.new(address: example_ip) }
 
   it "should require an address" do
     ip_address = described_class.new
@@ -80,7 +80,7 @@ describe IPAddress do
     end
 
     it "should return an empty Array for unknown domain names" do
-      ip_address = described_class.new(:address => bad_ip)
+      ip_address = described_class.new(address: bad_ip)
       host_names = ip_address.lookup!
 
       host_names.should be_empty
@@ -89,19 +89,19 @@ describe IPAddress do
 
   describe "#version" do
     it "should only accept 4 or 6" do
-      ip_address = described_class.new(:address => '1.1.1.1', :version => 7)
+      ip_address = described_class.new(address: '1.1.1.1', version: 7)
 
       ip_address.should_not be_valid
     end
 
     context "with IPv4 address" do
-      subject { described_class.new(:address => '127.0.0.1') }
+      subject { described_class.new(address: '127.0.0.1') }
 
       its(:version) { should == 4 }
     end
 
     context "with IPv6 address" do
-      subject { described_class.new(:address => '::1') }
+      subject { described_class.new(address: '::1') }
 
       its(:version) { should == 6 }
     end

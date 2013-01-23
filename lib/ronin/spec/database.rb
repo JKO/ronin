@@ -25,20 +25,20 @@ require 'tempfile'
 RSpec.configure do |spec|
   spec.before(:suite) do
     defaults = {
-      :user     => 'ronin_test',
-      :password => 'ronin_test',
-      :database => 'ronin_test'
+      user:     'ronin_test',
+      password: 'ronin_test',
+      database: 'ronin_test'
     }
     adapter  = ENV.fetch('ADAPTER','sqlite3')
 
     uri = case adapter
           when 'sqlite3', 'sqlite'
             {
-              :adapter  => 'sqlite3',
-              :database => Tempfile.new('ronin_database').path
+              adapter:  'sqlite3',
+              database: Tempfile.new('ronin_database').path
             }
           else
-            defaults.merge(:adapter => adapter)
+            defaults.merge(adapter: adapter)
           end
 
     # setup the database

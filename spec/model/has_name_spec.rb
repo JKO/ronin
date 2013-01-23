@@ -25,8 +25,8 @@ describe Model::HasName do
   end
 
   it "should be able to find resources with similar names" do
-    subject.create!(:name => 'foo1')
-    subject.create!(:name => 'foo2')
+    subject.create!(name: 'foo1')
+    subject.create!(name: 'foo2')
 
     resources = subject.named('foo')
 

@@ -44,19 +44,19 @@ describe Repository do
 
     it "should not add Repositorys that do not point to a directory" do
       lambda {
-        subject.add(:path => 'path/to/nowhere')
+        subject.add(path: 'path/to/nowhere')
       }.should raise_error(RepositoryNotFound)
     end
 
     it "should not allow adding an Repository from the same path twice" do
       lambda {
-        subject.add(:path => repository('local').path)
+        subject.add(path: repository('local').path)
       }.should raise_error(DuplicateRepository)
     end
 
     it "should not allow adding an Repository that was already installed" do
       lambda {
-        subject.add(:path => repository('installed').path)
+        subject.add(path: repository('installed').path)
       }.should raise_error(DuplicateRepository)
     end
   end
@@ -70,13 +70,13 @@ describe Repository do
 
     it "should not allow installing an Repository that was already added" do
       lambda {
-        subject.install(:uri => repository('remote').uri)
+        subject.install(uri: repository('remote').uri)
       }.should raise_error(DuplicateRepository)
     end
 
     it "should not allow installing an Repository from the same URI twice" do
       lambda {
-        subject.install(:uri => repository('installed').uri)
+        subject.install(uri: repository('installed').uri)
       }.should raise_error(DuplicateRepository)
     end
   end
@@ -100,7 +100,7 @@ describe Repository do
   describe "#initialize" do
     it "should default the 'name' property to the name of the Repository directory" do
       repo = subject.new(
-        :path => File.join(Helpers::Repositories::DIR,'local')
+        path: File.join(Helpers::Repositories::DIR,'local')
       )
 
       repo.name.should == 'local'
@@ -108,8 +108,8 @@ describe Repository do
 
     it "should default the 'installed' property to false" do
       repo = subject.new(
-        :path => File.join(Helpers::Repositories::DIR,'local'),
-        :uri => 'git://github.com/path/to/local.git'
+        path: File.join(Helpers::Repositories::DIR,'local'),
+        uri: 'git://github.com/path/to/local.git'
       )
 
       repo.installed.should == false

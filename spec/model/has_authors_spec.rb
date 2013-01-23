@@ -9,11 +9,11 @@ describe Model::HasAuthors do
   before(:all) do
     subject.auto_migrate!
 
-    resource = subject.new(:content => 'Test')
+    resource = subject.new(content: 'Test')
     resource.author(
-      :name => 'Alice',
-      :email => 'alice@example.com',
-      :organization => 'Crew'
+      name: 'Alice',
+      email: 'alice@example.com',
+      organization: 'Crew'
     )
 
     resource.save
@@ -39,7 +39,7 @@ describe Model::HasAuthors do
 
   it "should allow adding authors to a resource" do
     resource = subject.new
-    resource.author(:name => 'Alice', :email => 'alice@example.com')
+    resource.author(name: 'Alice', email: 'alice@example.com')
 
     resource.authors.should_not be_empty
   end

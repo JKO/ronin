@@ -6,7 +6,7 @@ describe HostName do
   let(:domain) { 'localhost' }
   let(:ip) { '127.0.0.1' }
 
-  subject { described_class.new(:address => domain) }
+  subject { described_class.new(address: domain) }
 
   describe "validations" do
     it "should require an address" do
@@ -85,7 +85,7 @@ describe HostName do
     end
 
     it "should return an empty Array for unknown host names" do
-      ips = described_class.new(:address => bad_domain).lookup!
+      ips = described_class.new(address: bad_domain).lookup!
       
       ips.should be_empty
     end

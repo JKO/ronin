@@ -10,8 +10,8 @@ describe Model::HasLicense do
     subject.auto_migrate!
 
     subject.create(
-      :content => 'stuff here',
-      :license => License.gpl2
+      content: 'stuff here',
+      license: License.gpl2
     )
   end
 
@@ -34,7 +34,7 @@ describe Model::HasLicense do
   end
 
   it "should not require a license" do
-    resource = subject.new(:content => 'bla')
+    resource = subject.new(content: 'bla')
 
     resource.should be_valid
   end

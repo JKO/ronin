@@ -17,8 +17,8 @@ describe Model::HasDescription do
   end
 
   it "should be able to find resources with similar descriptions" do
-    subject.create!(:description => 'foo one')
-    subject.create!(:description => 'foo bar two')
+    subject.create!(description: 'foo one')
+    subject.create!(description: 'foo bar two')
 
     resources = subject.describing('foo')
 
